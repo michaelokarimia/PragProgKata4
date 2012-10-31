@@ -4,6 +4,6 @@
     {
         void ParseWeatherData();
         void CalculateTemperatureSpread();
-        void OutputResults();
+        IResult OutputResults();
     }
 }

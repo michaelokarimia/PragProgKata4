@@ -1,10 +1,13 @@
-﻿namespace WeatherPart1.Domain
+﻿using WeatherPart1.Repository;
+
+namespace WeatherPart1.Domain
 {
     public class WeatherStation : IWeatherStation
     {
         private readonly IDataParser dataParser;
         private readonly ITemperatureCalculator temperatureCalculator;
         private readonly IOutputFormatter outputFormatter;
+        private IResultRepository resultsRepository;
 
         public WeatherStation(IDataParser dataParser, ITemperatureCalculator temperatureCalculator, IOutputFormatter outputFormatter)
         {
@@ -15,7 +18,7 @@
 
         public void ParseWeatherData()
         {
-            dataParser.Read();
+            resultsRepository = dataParser.Read();
         }
 
         public void CalculateTemperatureSpread()
@@ -23,9 +26,9 @@
             temperatureCalculator.Calculate();
         }
 
-        public void OutputResults()
+        public IResult OutputResults()
         {
-            outputFormatter.OutputResults();
+            return outputFormatter.OutputResults();
         }
     }
 }

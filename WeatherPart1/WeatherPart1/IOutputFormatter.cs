@@ -1,7 +1,9 @@
-﻿namespace WeatherPart1
+﻿using WeatherPart1.Domain;
+
+namespace WeatherPart1
 {
     public interface IOutputFormatter
     {
-        void OutputResults();
+        IResult OutputResults();
     }
 }
