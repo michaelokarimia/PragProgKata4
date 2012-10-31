@@ -1,4 +1,4 @@
-﻿namespace WeatherPart1
+﻿namespace WeatherPart1.Domain
 {
     internal interface IWeatherStation
     {
