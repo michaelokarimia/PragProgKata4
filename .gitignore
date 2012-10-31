@@ -9,4 +9,5 @@ build/Output
 */packages/
 *.ncrunchproject
 *.ncrunchsolution
+*packages.config
 

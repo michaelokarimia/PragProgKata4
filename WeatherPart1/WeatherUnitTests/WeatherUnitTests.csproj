@@ -49,9 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WeatherPart1\WeatherPart1.csproj">
       <Project>{A5D67D10-8CB4-412E-9F34-F9F3D7846589}</Project>
       <Name>WeatherPart1</Name>
