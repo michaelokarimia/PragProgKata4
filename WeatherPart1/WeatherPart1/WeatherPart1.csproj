@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDataParser.cs" />
     <Compile Include="IWeatherStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeatherStation.cs" />
