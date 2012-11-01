@@ -13,14 +13,14 @@ namespace WeatherUnitTests
     {
         private WeatherStation subject;
         private Mock<IDataParser<WeatherParsedEntity>> dataParser;
-        private Mock<ICalculator<IParsedEntity>> temperatureCalculator;
+        private Mock<ICalculator<WeatherParsedEntity, MaxDaySpreadSum>> temperatureCalculator;
         private Mock<IOutputFormatter> resultsOutputter;
 
         [SetUp]
         public void Setup()
         {
             dataParser = new Mock<IDataParser<WeatherParsedEntity>>();
-            temperatureCalculator = new Mock<ICalculator<IParsedEntity>>();
+            temperatureCalculator = new Mock<ICalculator<WeatherParsedEntity, MaxDaySpreadSum>>();
             resultsOutputter = new Mock<IOutputFormatter>();
             subject = new WeatherStation(dataParser.Object, temperatureCalculator.Object, resultsOutputter.Object);
         }

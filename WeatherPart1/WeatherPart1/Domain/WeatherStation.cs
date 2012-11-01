@@ -9,12 +9,12 @@ namespace WeatherPart1.Domain
     public class WeatherStation : IWeatherStation
     {
         private readonly IDataParser<WeatherParsedEntity> dataParser;
-        private readonly ICalculator<IParsedEntity> calculator;
+        private readonly ICalculator<WeatherParsedEntity, MaxDaySpreadSum> calculator;
         private readonly IOutputFormatter outputFormatter;
         private List<WeatherParsedEntity> parsedDataRepository;
         private ICalulatedSum result;
 
-        public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<IParsedEntity> calculator, IOutputFormatter outputFormatter)
+        public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<WeatherParsedEntity, MaxDaySpreadSum> calculator, IOutputFormatter outputFormatter)
         {
             this.dataParser = dataParser;
             this.calculator = calculator;

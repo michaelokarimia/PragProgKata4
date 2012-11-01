@@ -3,8 +3,8 @@ using WeatherPart1.Domain;
 
 namespace WeatherPart1.Calculators
 {
-    public interface ICalculator<T> where T : IParsedEntity 
+    public interface ICalculator<T,U> where T : IParsedEntity where U : ICalulatedSum
     {
-        ICalulatedSum Calculate(List<WeatherParsedEntity> results);
+        U Calculate(List<T> results);
     }
 }

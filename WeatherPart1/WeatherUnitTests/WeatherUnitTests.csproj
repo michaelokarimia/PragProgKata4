@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TemperatureSpreadCalculatorcs.cs" />
     <Compile Include="TextDataParserTests.cs" />
     <Compile Include="WeatherMapperTests.cs" />
     <Compile Include="WeatherStationTests.cs" />
