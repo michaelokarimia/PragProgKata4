@@ -1,7 +1,9 @@
-﻿namespace WeatherPart1.OutputFormatter
+﻿using WeatherPart1.Dto;
+
+namespace WeatherPart1.OutputFormatter
 {
-    public interface IOutputFormatter<T>
+    public interface IOutputFormatter<T, C> where C: ICalulatedResult 
     {
-        T OutputResults();
+        T OutputResults(C entity);
     }
 }

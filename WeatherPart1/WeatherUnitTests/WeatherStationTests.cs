@@ -15,14 +15,14 @@ namespace WeatherUnitTests
         private WeatherStation subject;
         private Mock<IDataParser<WeatherParsedEntity>> dataParser;
         private Mock<ICalculator<WeatherParsedEntity, MaxDaySpread>> temperatureCalculator;
-        private Mock<IOutputFormatter<string>> resultsOutputter;
+        private Mock<IOutputFormatter<string, MaxDaySpread>> resultsOutputter;
 
         [SetUp]
         public void Setup()
         {
             dataParser = new Mock<IDataParser<WeatherParsedEntity>>();
             temperatureCalculator = new Mock<ICalculator<WeatherParsedEntity, MaxDaySpread>>();
-            resultsOutputter = new Mock<IOutputFormatter<string>>();
+            resultsOutputter = new Mock<IOutputFormatter<string, MaxDaySpread>>();
             subject = new WeatherStation(dataParser.Object, temperatureCalculator.Object, resultsOutputter.Object);
         }
 
@@ -44,7 +44,7 @@ namespace WeatherUnitTests
         public void CanOutputResults()
         {
             subject.OutputResults();
-            resultsOutputter.Verify(x => x.OutputResults(), Times.Once());
+            resultsOutputter.Verify(x => x.OutputResults(It.IsAny<MaxDaySpread>()), Times.Once());
         }
     }
 }

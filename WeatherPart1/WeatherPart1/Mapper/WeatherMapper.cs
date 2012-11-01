@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using WeatherPart1.Domain;
-using WeatherPart1.Dto;
+﻿using WeatherPart1.Dto;
 
 namespace WeatherPart1.Mapper
 {
@@ -13,7 +11,6 @@ namespace WeatherPart1.Mapper
 
         public WeatherParsedEntity Map(string validLineOfWeatherDataRow)
         {
-            new WeatherParsedEntity();
             var columnsOfLine = validLineOfWeatherDataRow.Split(SEPARATOR);
             int day;
             decimal maxTemp;

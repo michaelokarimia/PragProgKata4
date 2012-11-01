@@ -20,13 +20,13 @@ namespace WeatherUnitTests
         public void Setup()
         {
             weatherStationData = new MaxDaySpread(20);
-            subject = new MaximumDayTemperatureOutputFormatter(weatherStationData);
+            subject = new MaximumDayTemperatureOutputFormatter();
         }
 
         [Test]
         public void CanOutputStringDayNumber()
         {
-            Assert.AreEqual(expectedString, subject.OutputResults());
+            Assert.AreEqual(expectedString, subject.OutputResults(weatherStationData));
         }
     }
 }

@@ -2,16 +2,9 @@
 
 namespace WeatherPart1.OutputFormatter
 {
-    public class MaximumDayTemperatureOutputFormatter : IOutputFormatter<string>
+    public class MaximumDayTemperatureOutputFormatter : IOutputFormatter<string, MaxDaySpread>
     {
-        private readonly MaxDaySpread daywithMaxDaySpread;
-
-        public MaximumDayTemperatureOutputFormatter(MaxDaySpread daywithMaxDaySpread)
-        {
-            this.daywithMaxDaySpread = daywithMaxDaySpread;
-        }
-
-        public string OutputResults()
+        public string OutputResults(MaxDaySpread daywithMaxDaySpread)
         {
             return string.Format("Maximum Temperature spread was during Day {0}", daywithMaxDaySpread.DayNumber);
         }

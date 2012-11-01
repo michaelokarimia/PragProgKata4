@@ -49,6 +49,7 @@
     <Compile Include="TemperatureSpreadCalculatorTest.cs" />
     <Compile Include="TextDataParserTests.cs" />
     <Compile Include="WeatherMapperTests.cs" />
+    <Compile Include="WeatherStationAcceptanceTests.cs" />
     <Compile Include="WeatherStationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

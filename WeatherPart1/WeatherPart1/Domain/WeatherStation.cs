@@ -11,11 +11,11 @@ namespace WeatherPart1.Domain
     {
         private readonly IDataParser<WeatherParsedEntity> dataParser;
         private readonly ICalculator<WeatherParsedEntity, MaxDaySpread> calculator;
-        private readonly IOutputFormatter<string> outputFormatter;
+        private readonly IOutputFormatter<string, MaxDaySpread> outputFormatter;
         private List<WeatherParsedEntity> parsedDataRepository;
-        private ICalulatedResult result;
+        private MaxDaySpread result;
 
-        public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<WeatherParsedEntity, MaxDaySpread> calculator, IOutputFormatter<string> outputFormatter)
+        public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<WeatherParsedEntity, MaxDaySpread> calculator, IOutputFormatter<string, MaxDaySpread> outputFormatter)
         {
             this.dataParser = dataParser;
             this.calculator = calculator;
@@ -35,7 +35,7 @@ namespace WeatherPart1.Domain
 
         public string OutputResults()
         {
-            return outputFormatter.OutputResults();
+            return outputFormatter.OutputResults(result);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using WeatherPart1.Calculators;
-
-namespace WeatherPart1.Dto
+﻿namespace WeatherPart1.Dto
 {
     public class MaxDaySpread : ICalulatedResult
     {
