@@ -40,19 +40,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculators\ICalculator.cs" />
-    <Compile Include="Calculators\ICalulatedSum.cs" />
-    <Compile Include="Calculators\MaxDaySpreadSum.cs" />
     <Compile Include="Calculators\TemperatureSpreadCalculator.cs" />
-    <Compile Include="Domain\IParsedEntity.cs" />
     <Compile Include="Domain\IWeatherStation.cs" />
-    <Compile Include="Domain\WeatherParsedEntity.cs" />
     <Compile Include="Domain\WeatherStation.cs" />
+    <Compile Include="Dto\ICalulatedResult.cs" />
+    <Compile Include="Dto\IParsedEntity.cs" />
+    <Compile Include="Dto\MaxDaySpread.cs" />
+    <Compile Include="Dto\WeatherParsedEntity.cs" />
     <Compile Include="IO\IInputReader.cs" />
     <Compile Include="IO\InputReader.cs" />
     <Compile Include="IO\InputReaderFactory.cs" />
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\WeatherMapper.cs" />
     <Compile Include="OutputFormatter\IOutputFormatter.cs" />
+    <Compile Include="OutputFormatter\MaximumDayTemperatureOutputFormatter.cs" />
     <Compile Include="Parser\IDataParser.cs" />
     <Compile Include="Parser\TextDataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

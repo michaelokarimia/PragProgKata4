@@ -1,4 +1,6 @@
-﻿namespace WeatherPart1.Domain
+﻿using WeatherPart1.Domain;
+
+namespace WeatherPart1.Dto
 {
     public class WeatherParsedEntity :IParsedEntity
     {

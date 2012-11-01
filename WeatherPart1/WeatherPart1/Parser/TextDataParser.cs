@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 using WeatherPart1.IO;
 using WeatherPart1.Mapper;
 
 namespace WeatherPart1.Parser
 {
-    public class TextDataParser : IDataParser<IParsedEntity>
+    public class TextDataParser : IDataParser<WeatherParsedEntity>
     {
         private readonly string validDataFilePath;
         private readonly IMapper dataMapper;
@@ -18,10 +19,10 @@ namespace WeatherPart1.Parser
             this.dataMapper = dataMapper;
         }
 
-        public List<IParsedEntity> GetResultList()
+        public List<WeatherParsedEntity> GetResultList()
         {
             WeatherParsedEntity weatherParsedEntity;
-            List<IParsedEntity> weatherResultList = new List<IParsedEntity>();
+            var weatherResultList = new List<WeatherParsedEntity>();
 
            
             using (var inputReader = inputReaderFactory.GetReader(validDataFilePath))

@@ -4,6 +4,7 @@ using Moq;
 using NUnit.Framework;
 using WeatherPart1;
 using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 using WeatherPart1.IO;
 using WeatherPart1.Mapper;
 using WeatherPart1.Parser;
@@ -13,7 +14,7 @@ namespace WeatherUnitTests
     [TestFixture]
     public class TextDataParserTests
     {
-        private IDataParser<IParsedEntity> subject;
+        private IDataParser<WeatherParsedEntity> subject;
         private Mock<IMapper> dataMapperMock;
         private Mock<IInputReader> inputReaderMock;
         private string oneLineOfTestText;

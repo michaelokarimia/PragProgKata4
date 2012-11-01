@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using WeatherPart1.Calculators;
 using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 using WeatherPart1.OutputFormatter;
 using WeatherPart1.Parser;
 
@@ -13,15 +14,15 @@ namespace WeatherUnitTests
     {
         private WeatherStation subject;
         private Mock<IDataParser<WeatherParsedEntity>> dataParser;
-        private Mock<ICalculator<WeatherParsedEntity, MaxDaySpreadSum>> temperatureCalculator;
-        private Mock<IOutputFormatter> resultsOutputter;
+        private Mock<ICalculator<WeatherParsedEntity, MaxDaySpread>> temperatureCalculator;
+        private Mock<IOutputFormatter<string>> resultsOutputter;
 
         [SetUp]
         public void Setup()
         {
             dataParser = new Mock<IDataParser<WeatherParsedEntity>>();
-            temperatureCalculator = new Mock<ICalculator<WeatherParsedEntity, MaxDaySpreadSum>>();
-            resultsOutputter = new Mock<IOutputFormatter>();
+            temperatureCalculator = new Mock<ICalculator<WeatherParsedEntity, MaxDaySpread>>();
+            resultsOutputter = new Mock<IOutputFormatter<string>>();
             subject = new WeatherStation(dataParser.Object, temperatureCalculator.Object, resultsOutputter.Object);
         }
 

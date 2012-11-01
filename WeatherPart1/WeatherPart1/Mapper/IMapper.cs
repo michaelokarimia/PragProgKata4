@@ -1,4 +1,5 @@
 ﻿using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 
 namespace WeatherPart1.Mapper
 {

@@ -1,9 +1,7 @@
-﻿using WeatherPart1.Domain;
-
-namespace WeatherPart1.OutputFormatter
+﻿namespace WeatherPart1.OutputFormatter
 {
-    public interface IOutputFormatter
+    public interface IOutputFormatter<T>
     {
-        IParsedEntity OutputResults();
+        T OutputResults();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 using WeatherPart1.Mapper;
 
 namespace WeatherUnitTests

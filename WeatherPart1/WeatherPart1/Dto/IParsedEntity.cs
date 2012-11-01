@@ -1,4 +1,4 @@
-﻿namespace WeatherPart1.Domain
+﻿namespace WeatherPart1.Dto
 {
     public interface IParsedEntity
     {

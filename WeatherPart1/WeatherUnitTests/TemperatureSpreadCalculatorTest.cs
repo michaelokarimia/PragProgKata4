@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using WeatherPart1.Calculators;
-using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 
 namespace WeatherUnitTests
 {
     [TestFixture]
-    public class TemperatureSpreadCalculatorcs
+    public class TemperatureSpreadCalculatorTest
     {
         private TemperatureSpreadCalculator subject;
         private List<WeatherParsedEntity> weatherResults;
@@ -27,8 +24,8 @@ namespace WeatherUnitTests
         {
             weatherResults = new List<WeatherParsedEntity>
                                  {new WeatherParsedEntity(17, 10, 0), new WeatherParsedEntity(2, 8, 6)};
-            MaxDaySpreadSum calulatedSum = subject.Calculate(weatherResults);
-            Assert.AreEqual(17, calulatedSum.DayNumber);
+            MaxDaySpread calulated = subject.Calculate(weatherResults);
+            Assert.AreEqual(17, calulated.DayNumber);
         }
     }
 }

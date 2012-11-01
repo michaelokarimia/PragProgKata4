@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using WeatherPart1.Domain;
+using WeatherPart1.Dto;
 
 namespace WeatherPart1.Calculators
 {
-    public class TemperatureSpreadCalculator : ICalculator<WeatherParsedEntity, MaxDaySpreadSum>
+    public class TemperatureSpreadCalculator : ICalculator<WeatherParsedEntity, MaxDaySpread>
     {
-        public MaxDaySpreadSum Calculate(List<WeatherParsedEntity> results)
+        public MaxDaySpread Calculate(List<WeatherParsedEntity> results)
         {
             var dayNumber = -1;
             decimal maxSpread = 0;
@@ -19,7 +20,7 @@ namespace WeatherPart1.Calculators
                 }
             }
 
-            return new MaxDaySpreadSum(dayNumber);
+            return new MaxDaySpread(dayNumber);
         }
     }
 }
