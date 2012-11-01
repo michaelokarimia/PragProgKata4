@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Calculators\ICalculator.cs" />
     <Compile Include="Calculators\ICalulatedSum.cs" />
+    <Compile Include="Calculators\MaxDaySpreadSum.cs" />
     <Compile Include="Calculators\TemperatureSpreadCalculator.cs" />
     <Compile Include="Domain\IParsedEntity.cs" />
     <Compile Include="Domain\IWeatherStation.cs" />

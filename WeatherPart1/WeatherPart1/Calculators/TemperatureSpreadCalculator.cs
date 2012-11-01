@@ -4,13 +4,25 @@ using WeatherPart1.Domain;
 
 namespace WeatherPart1.Calculators
 {
-    public class TemperatureSpreadCalculator : ICalculator<IParsedEntity>
+    public class TemperatureSpreadCalculator : ICalculator<WeatherParsedEntity>
     {
-        public List<ICalulatedSum> Calculate(List<WeatherParsedEntity> results)
+        public ICalulatedSum Calculate(List<WeatherParsedEntity> results)
         {
-            throw new NotImplementedException();
+            var dayNumber = -1;
+            decimal maxSpread = decimal.MaxValue;
+            foreach (WeatherParsedEntity weatherParsedEntity in results)
+            {
+                var currentspread = weatherParsedEntity.MaxTemperature - weatherParsedEntity.MinTemperature;
+                if (currentspread < maxSpread)
+                {
+                    maxSpread = currentspread;
+                    dayNumber = weatherParsedEntity.Day;
+                }
+            }
+
+            return new MaxDaySpreadSum(dayNumber);
         }
 
+        
     }
-
 }

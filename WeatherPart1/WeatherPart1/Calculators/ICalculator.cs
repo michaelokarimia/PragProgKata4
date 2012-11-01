@@ -5,6 +5,6 @@ namespace WeatherPart1.Calculators
 {
     public interface ICalculator<T> where T : IParsedEntity 
     {
-        List<ICalulatedSum> Calculate(List<WeatherParsedEntity> results);
+        ICalulatedSum Calculate(List<WeatherParsedEntity> results);
     }
 }

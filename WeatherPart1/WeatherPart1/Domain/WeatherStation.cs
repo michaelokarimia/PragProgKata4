@@ -12,7 +12,7 @@ namespace WeatherPart1.Domain
         private readonly ICalculator<IParsedEntity> calculator;
         private readonly IOutputFormatter outputFormatter;
         private List<WeatherParsedEntity> parsedDataRepository;
-        private List<ICalulatedSum> resultsRepository;
+        private ICalulatedSum result;
 
         public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<IParsedEntity> calculator, IOutputFormatter outputFormatter)
         {
@@ -29,7 +29,7 @@ namespace WeatherPart1.Domain
    
         public void CalculateTemperatureSpread()
         {
-            resultsRepository = calculator.Calculate(parsedDataRepository);
+            result = calculator.Calculate(parsedDataRepository);
         }
 
         public IParsedEntity OutputResults()
