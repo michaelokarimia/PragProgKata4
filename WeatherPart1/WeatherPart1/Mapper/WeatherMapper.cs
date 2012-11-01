@@ -1,23 +1,28 @@
-﻿using WeatherPart1.Domain;
+﻿using System.Globalization;
+using WeatherPart1.Domain;
 
 namespace WeatherPart1.Mapper
 {
     public class WeatherMapper : IMapper
     {
-        private const int INDEX_OF_DAY = 3;
+        private const int MIN_TEMP_INDEX = 9;
+        private const int DAY_INDEX = 3;
         private const char SEPARATOR = ' ';
-        private const int INDEX_OF_MAX_TEMP = 5;
+        private const int MAX_TEMP_INDEX = 5;
 
-        public WeatherResult Map(string validLineOfWeatherData)
+        public WeatherResult Map(string validLineOfWeatherDataRow)
         {
-            var result = new WeatherResult();
-            var columnsOfLine = validLineOfWeatherData.Split(SEPARATOR);
+            new WeatherResult();
+            var columnsOfLine = validLineOfWeatherDataRow.Split(SEPARATOR);
             int day;
             decimal maxTemp;
-            if(int.TryParse(columnsOfLine[INDEX_OF_DAY], out day) 
-               && decimal.TryParse(columnsOfLine[INDEX_OF_MAX_TEMP], out maxTemp))
-                result = new WeatherResult(day, maxTemp);
-            return result;
+            decimal minTemp;
+            int.TryParse(columnsOfLine[DAY_INDEX], out day);
+            decimal.TryParse(columnsOfLine[MAX_TEMP_INDEX], out maxTemp);
+            decimal.TryParse(columnsOfLine[MIN_TEMP_INDEX], out minTemp);
+
+            return new WeatherResult(day, maxTemp, minTemp);
+            
         }
     }
 }
