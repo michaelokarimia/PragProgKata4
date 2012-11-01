@@ -1,7 +1,12 @@
-﻿using Moq;
+﻿using System;
+using System.IO;
+using Moq;
 using NUnit.Framework;
 using WeatherPart1;
-using WeatherPart1.Repository;
+using WeatherPart1.Domain;
+using WeatherPart1.IO;
+using WeatherPart1.Mapper;
+using WeatherPart1.Parser;
 
 namespace WeatherUnitTests
 {
@@ -9,26 +14,34 @@ namespace WeatherUnitTests
     public class TextDataParserTests
     {
         private IDataParser subject;
-        private string validDataFile;
         private Mock<IMapper> dataMapperMock;
+        private Mock<IInputReader> inputReaderMock;
+        private string oneLineOfTestText;
+        private Mock<InputReaderFactory> inputReaderFactoryMock;
 
         [SetUp]
         public void Setup()
         {
             dataMapperMock= new Mock<IMapper>();
-            subject = new TextDataParser(validDataFile, dataMapperMock.Object);
+            inputReaderMock = new Mock<IInputReader>();
+            oneLineOfTestText = "first Line of txt";
+            inputReaderFactoryMock = new Mock<InputReaderFactory>();
+            
+            inputReaderMock.Setup(x => x.ReadLine()).Returns(() => oneLineOfTestText).Callback(() => oneLineOfTestText = null);
+
+            inputReaderFactoryMock.Setup(x => x.GetReader(It.IsAny<string>())).Returns(inputReaderMock.Object);
         }
 
         [Test]
         public void MapsDataSourceToResultsRepository()
         {
-            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherDataResultsRepository());
-            subject = new TextDataParser(validDataFile, dataMapperMock.Object);
+            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
 
-            var repository = subject.Read();
+            subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
+            
+            subject.GetResultList();
 
             dataMapperMock.Verify(x=>x.Map(It.IsAny<string>()), Times.Once());
-            Assert.AreEqual(typeof(WeatherDataResultsRepository),repository.GetType());
         }
 
     }

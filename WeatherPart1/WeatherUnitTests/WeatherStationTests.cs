@@ -1,7 +1,10 @@
 ﻿using Moq;
 using NUnit.Framework;
 using WeatherPart1;
+using WeatherPart1.Calculators;
 using WeatherPart1.Domain;
+using WeatherPart1.OutputFormatter;
+using WeatherPart1.Parser;
 
 namespace WeatherUnitTests
 {
@@ -26,7 +29,7 @@ namespace WeatherUnitTests
         public void CanReadWeatherDataFile()
         {
             subject.ParseWeatherData();
-            dataParser.Verify(x=>x.Read(), Times.Once());
+            dataParser.Verify(x=>x.GetResultList(), Times.Once());
         }
 
         [Test]

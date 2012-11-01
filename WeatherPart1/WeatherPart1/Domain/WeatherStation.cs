@@ -1,4 +1,8 @@
-﻿using WeatherPart1.Repository;
+﻿using System.Collections.Generic;
+using WeatherPart1.Calculators;
+using WeatherPart1.OutputFormatter;
+using WeatherPart1.Parser;
+
 
 namespace WeatherPart1.Domain
 {
@@ -7,7 +11,7 @@ namespace WeatherPart1.Domain
         private readonly IDataParser dataParser;
         private readonly ITemperatureCalculator temperatureCalculator;
         private readonly IOutputFormatter outputFormatter;
-        private IResultRepository resultsRepository;
+        private List<WeatherResult> resultsRepository;
 
         public WeatherStation(IDataParser dataParser, ITemperatureCalculator temperatureCalculator, IOutputFormatter outputFormatter)
         {
@@ -18,7 +22,7 @@ namespace WeatherPart1.Domain
 
         public void ParseWeatherData()
         {
-            resultsRepository = dataParser.Read();
+            resultsRepository = dataParser.GetResultList();
         }
 
         public void CalculateTemperatureSpread()

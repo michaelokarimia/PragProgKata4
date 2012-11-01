@@ -39,17 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculators\ITemperatureCalculator.cs" />
     <Compile Include="Domain\IResult.cs" />
     <Compile Include="Domain\IWeatherStation.cs" />
+    <Compile Include="Domain\WeatherResult.cs" />
     <Compile Include="Domain\WeatherStation.cs" />
-    <Compile Include="IDataParser.cs" />
-    <Compile Include="IMapper.cs" />
-    <Compile Include="IOutputFormatter.cs" />
-    <Compile Include="ITemperatureCalculator.cs" />
+    <Compile Include="IO\IInputReader.cs" />
+    <Compile Include="IO\InputReader.cs" />
+    <Compile Include="IO\InputReaderFactory.cs" />
+    <Compile Include="Mapper\IMapper.cs" />
+    <Compile Include="OutputFormatter\IOutputFormatter.cs" />
+    <Compile Include="Parser\IDataParser.cs" />
+    <Compile Include="Parser\TextDataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IResultRepository.cs" />
-    <Compile Include="Repository\WeatherDataResultsRepository.cs" />
-    <Compile Include="TextDataParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\weather.dat" />
