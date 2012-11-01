@@ -1,6 +1,6 @@
 ﻿using Moq;
 using NUnit.Framework;
-using WeatherPart1;
+using System.Collections.Generic;
 using WeatherPart1.Calculators;
 using WeatherPart1.Domain;
 using WeatherPart1.OutputFormatter;
@@ -12,15 +12,15 @@ namespace WeatherUnitTests
     public class WeatherStationTests
     {
         private WeatherStation subject;
-        private Mock<IDataParser> dataParser;
-        private Mock<ITemperatureCalculator> temperatureCalculator;
+        private Mock<IDataParser<WeatherParsedEntity>> dataParser;
+        private Mock<TemperatureSpreadCalculator> temperatureCalculator;
         private Mock<IOutputFormatter> resultsOutputter;
 
         [SetUp]
         public void Setup()
         {
-            dataParser = new Mock<IDataParser>();
-            temperatureCalculator = new Mock<ITemperatureCalculator>();
+            dataParser = new Mock<IDataParser<WeatherParsedEntity>>();
+            temperatureCalculator = new Mock<TemperatureSpreadCalculator>();
             resultsOutputter = new Mock<IOutputFormatter>();
             subject = new WeatherStation(dataParser.Object, temperatureCalculator.Object, resultsOutputter.Object);
         }
@@ -36,7 +36,7 @@ namespace WeatherUnitTests
         public void CanCalculateTemperatureSpreads()
         {
             subject.CalculateTemperatureSpread();
-            temperatureCalculator.Verify(x => x.Calculate(), Times.Once());
+            temperatureCalculator.Verify(x => x.Calculate(It.IsAny<List<WeatherParsedEntity>>()), Times.Once());
         }
 
         [Test]

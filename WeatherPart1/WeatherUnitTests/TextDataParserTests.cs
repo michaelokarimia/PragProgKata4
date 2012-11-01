@@ -13,7 +13,7 @@ namespace WeatherUnitTests
     [TestFixture]
     public class TextDataParserTests
     {
-        private IDataParser subject;
+        private IDataParser<IParsedEntity> subject;
         private Mock<IMapper> dataMapperMock;
         private Mock<IInputReader> inputReaderMock;
         private string oneLineOfTestText;
@@ -34,7 +34,7 @@ namespace WeatherUnitTests
 
         [Test]
         public void TextDataReaderCanReadAllLinesOfInput()
-        {     dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+        {     dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherParsedEntity());
 
             subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
             
@@ -46,7 +46,7 @@ namespace WeatherUnitTests
         [Test]
         public void MapperCanMapDataSourceToResultsList()
         {
-            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherParsedEntity());
 
             subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
             
@@ -60,7 +60,7 @@ namespace WeatherUnitTests
         [Test]
         public void InputReaderIsDisposedAfterUse()
         {
-            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherParsedEntity());
 
             subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
 

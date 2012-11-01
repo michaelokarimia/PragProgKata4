@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculators\ITemperatureCalculator.cs" />
-    <Compile Include="Domain\IResult.cs" />
+    <Compile Include="Calculators\ICalculator.cs" />
+    <Compile Include="Calculators\ICalulatedSum.cs" />
+    <Compile Include="Calculators\TemperatureSpreadCalculator.cs" />
+    <Compile Include="Domain\IParsedEntity.cs" />
     <Compile Include="Domain\IWeatherStation.cs" />
-    <Compile Include="Domain\WeatherResult.cs" />
+    <Compile Include="Domain\WeatherParsedEntity.cs" />
     <Compile Include="Domain\WeatherStation.cs" />
     <Compile Include="IO\IInputReader.cs" />
     <Compile Include="IO\InputReader.cs" />

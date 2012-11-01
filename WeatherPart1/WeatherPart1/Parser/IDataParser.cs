@@ -3,8 +3,8 @@ using WeatherPart1.Domain;
 
 namespace WeatherPart1.Parser
 {
-    public interface IDataParser
+    public interface IDataParser<T> where T : IParsedEntity
     {
-         List<WeatherResult> GetResultList();
+        List<T> GetResultList();
     }
 }   

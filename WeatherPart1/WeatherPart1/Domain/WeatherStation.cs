@@ -8,29 +8,31 @@ namespace WeatherPart1.Domain
 {
     public class WeatherStation : IWeatherStation
     {
-        private readonly IDataParser dataParser;
-        private readonly ITemperatureCalculator temperatureCalculator;
+        private readonly IDataParser<WeatherParsedEntity> dataParser;
+        private readonly ICalculator<IParsedEntity> calculator;
         private readonly IOutputFormatter outputFormatter;
-        private List<WeatherResult> resultsRepository;
+        private List<WeatherParsedEntity> parsedDataRepository;
+        private List<ICalulatedSum> resultsRepository;
 
-        public WeatherStation(IDataParser dataParser, ITemperatureCalculator temperatureCalculator, IOutputFormatter outputFormatter)
+        public WeatherStation(IDataParser<WeatherParsedEntity> dataParser, ICalculator<IParsedEntity> calculator, IOutputFormatter outputFormatter)
         {
             this.dataParser = dataParser;
-            this.temperatureCalculator = temperatureCalculator;
+            this.calculator = calculator;
             this.outputFormatter = outputFormatter;
         }
 
         public void ParseWeatherData()
         {
-            resultsRepository = dataParser.GetResultList();
+            parsedDataRepository = dataParser.GetResultList();
         }
 
+   
         public void CalculateTemperatureSpread()
         {
-            temperatureCalculator.Calculate();
+            resultsRepository = calculator.Calculate(parsedDataRepository);
         }
 
-        public IResult OutputResults()
+        public IParsedEntity OutputResults()
         {
             return outputFormatter.OutputResults();
         }

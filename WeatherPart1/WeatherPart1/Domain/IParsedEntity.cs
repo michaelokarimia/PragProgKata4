@@ -1,6 +1,6 @@
 ﻿namespace WeatherPart1.Domain
 {
-    public interface IResult
+    public interface IParsedEntity
     {
     }
 }

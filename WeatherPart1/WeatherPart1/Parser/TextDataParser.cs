@@ -5,7 +5,7 @@ using WeatherPart1.Mapper;
 
 namespace WeatherPart1.Parser
 {
-    public class TextDataParser : IDataParser
+    public class TextDataParser : IDataParser<IParsedEntity>
     {
         private readonly string validDataFilePath;
         private readonly IMapper dataMapper;
@@ -18,10 +18,10 @@ namespace WeatherPart1.Parser
             this.dataMapper = dataMapper;
         }
 
-        public List<WeatherResult> GetResultList()
+        public List<IParsedEntity> GetResultList()
         {
-            WeatherResult weatherResult;
-            var weatherResultList = new List<WeatherResult>();
+            WeatherParsedEntity weatherParsedEntity;
+            List<IParsedEntity> weatherResultList = new List<IParsedEntity>();
 
            
             using (var inputReader = inputReaderFactory.GetReader(validDataFilePath))
@@ -29,8 +29,8 @@ namespace WeatherPart1.Parser
                 string line;
                 while ((line = inputReader.ReadLine()) != null)
                 {
-                    weatherResult = dataMapper.Map(line);
-                    weatherResultList.Add(weatherResult);
+                    weatherParsedEntity = dataMapper.Map(line);
+                    weatherResultList.Add(weatherParsedEntity);
                 }
             }
             return weatherResultList;

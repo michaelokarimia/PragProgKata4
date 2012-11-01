@@ -10,9 +10,9 @@ namespace WeatherPart1.Mapper
         private const char SEPARATOR = ' ';
         private const int MAX_TEMP_INDEX = 5;
 
-        public WeatherResult Map(string validLineOfWeatherDataRow)
+        public WeatherParsedEntity Map(string validLineOfWeatherDataRow)
         {
-            new WeatherResult();
+            new WeatherParsedEntity();
             var columnsOfLine = validLineOfWeatherDataRow.Split(SEPARATOR);
             int day;
             decimal maxTemp;
@@ -21,7 +21,7 @@ namespace WeatherPart1.Mapper
             decimal.TryParse(columnsOfLine[MAX_TEMP_INDEX], out maxTemp);
             decimal.TryParse(columnsOfLine[MIN_TEMP_INDEX], out minTemp);
 
-            return new WeatherResult(day, maxTemp, minTemp);
+            return new WeatherParsedEntity(day, maxTemp, minTemp);
             
         }
     }

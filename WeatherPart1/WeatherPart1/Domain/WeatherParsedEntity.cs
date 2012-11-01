@@ -1,15 +1,15 @@
 ﻿namespace WeatherPart1.Domain
 {
-    public class WeatherResult :IResult
+    public class WeatherParsedEntity :IParsedEntity
     {
-        public WeatherResult(int day, decimal maxTemp, decimal minTemp)
+        public WeatherParsedEntity(int day, decimal maxTemp, decimal minTemp)
         {
             Day = day;
             MaxTemperature = maxTemp;
             MinTemperature = minTemp;
         }
 
-        public WeatherResult() {}
+        public WeatherParsedEntity() {}
 
         public int Day { get; private set; }
 
