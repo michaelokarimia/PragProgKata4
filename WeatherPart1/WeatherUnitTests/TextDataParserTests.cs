@@ -33,15 +33,40 @@ namespace WeatherUnitTests
         }
 
         [Test]
-        public void MapsDataSourceToResultsRepository()
-        {
-            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+        public void TextDataReaderCanReadAllLinesOfInput()
+        {     dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
 
             subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
             
             subject.GetResultList();
 
+            inputReaderMock.Verify(x=>x.ReadLine(), Times.Exactly(2));
+        }
+
+        [Test]
+        public void MapperCanMapDataSourceToResultsList()
+        {
+            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+
+            subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
+            
+            var resultsList = subject.GetResultList();
+
             dataMapperMock.Verify(x=>x.Map(It.IsAny<string>()), Times.Once());
+
+            Assert.AreEqual(1,resultsList.Count);
+        }
+
+        [Test]
+        public void InputReaderIsDisposedAfterUse()
+        {
+            dataMapperMock.Setup(x => x.Map(It.IsAny<string>())).Returns(new WeatherResult());
+
+            subject = new TextDataParser(It.IsAny<string>(), dataMapperMock.Object, inputReaderFactoryMock.Object);
+
+            subject.GetResultList();
+
+            inputReaderMock.Verify(x => x.Dispose(), Times.Once());
         }
 
     }

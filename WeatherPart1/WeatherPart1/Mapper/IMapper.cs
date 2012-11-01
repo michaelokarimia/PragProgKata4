@@ -4,6 +4,6 @@ namespace WeatherPart1.Mapper
 {
     public interface IMapper
     {
-        WeatherResult Map(string validDataFilePath);
+        WeatherResult Map(string vsalidLineOfWeatherData);
     }
 }

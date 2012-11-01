@@ -48,6 +48,7 @@
     <Compile Include="IO\InputReader.cs" />
     <Compile Include="IO\InputReaderFactory.cs" />
     <Compile Include="Mapper\IMapper.cs" />
+    <Compile Include="Mapper\WeatherMapper.cs" />
     <Compile Include="OutputFormatter\IOutputFormatter.cs" />
     <Compile Include="Parser\IDataParser.cs" />
     <Compile Include="Parser\TextDataParser.cs" />
